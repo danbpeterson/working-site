@@ -165,7 +165,7 @@ header {
     height: 100vh;
     height: 100dvh;
     padding: 80px 20px;
-    background: url('/images/hiking-hero.jpg') no-repeat center center/cover;
+    background: url('images/hiking-hero.jpg') no-repeat center center/cover;
     overflow: hidden;
 
     display: grid;
