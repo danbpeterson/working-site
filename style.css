@@ -100,10 +100,22 @@ nav a.accent-link{
     z-index: 9;
     display: none;
 }
-@media screen and (max-width: 750px){
+@media screen and (max-width: 900px){
     #open-sidebar-button, #close-sidebar-button{
         display: block;
     }
+
+#open-sidebar-button {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        padding-right: 0.75rem;
+        z-index: 19; /* higher than nav */
+    }
+
+
+
+
     nav{
         position: fixed;
         top: 0;
@@ -150,14 +162,17 @@ body{
 
 header {
     position: relative;
+    height: 100vh;
+    height: 100dvh;
     padding: 80px 20px;
     background: url('../images/hiking-hero.jpg') no-repeat center center/cover;
-    /* background: url('../images/test_surf_hero_1.jpg') no-repeat center center/cover; */
     overflow: hidden;
-    display: flex;
-    justify-content: flex-end; /* pushes content to the right */
-    align-items: center;       /* vertically centers the text */
+
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* left half + right half */
+    align-items: center;
 }
+
 
 /* Left → Right fade into --nav-background */
 header::before {
@@ -174,13 +189,60 @@ header::before {
 }
 
 
-/* Right-half text container */
+/* LEFT SIDE — ABOS card centered */
+.header-left {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+}
+
+
+.header-cert-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+
+/* RIGHT SIDE — your existing text box */
 header .text-box {
     position: relative;
-    width: 50%;
-    text-align: center;
     z-index: 2;
+    width: 100%;
+    text-align: center;
 }
+
+@media (max-width: 900px) {
+
+    header {
+        grid-template-columns: 1fr;
+        gap: 3rem;              /* increase spacing between text + card */
+        padding-top: 120px;
+        text-align: center;
+    }
+
+    .text-box {
+        order: 1;
+        margin-bottom: 2rem;    /* extra space below text */
+    }
+
+    .header-left {
+        order: 2;
+        display: flex;
+        justify-content: center;
+    }
+
+    .header-cert-logo {
+        width: 90%;
+        margin: 0 auto 2rem auto; /* extra spacing below card if needed */
+    }
+}
+
 
 header h1,
 header h2 {
@@ -217,42 +279,32 @@ header h2.active {
     margin: 20px auto;
 }
 
-/* Full-width text */
-.bio-text-full {
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto 3rem auto;
-    line-height: 1.8;
-    font-size: 1.1rem;
-}
-
-/* Two-column layout */
-.bio-split {
+/* Bio container: two columns */
+.bio-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
+    width: 80%;
+    max-width: 1200px;
+    margin: 4rem auto;      /* more space above and below the whole section */
     align-items: start;
-    margin-top: 2rem;
 }
 
-/* Left column: ABOS logo + button */
-.bio-cert {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+/* Left side text */
+.bio-left {
+    line-height: 1.9;       /* taller line spacing */
+    font-size: 1.15rem;
+    padding: 1rem 0;        /* extra top/bottom breathing room */
 }
 
-.cert-logo {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    object-fit: contain;
-    margin-bottom: 1.5rem;
+.bio-left p {
+    margin-bottom: 1.4em;   /* more space between paragraphs */
 }
 
-.cert-button {
-    display: inline-block;
+/* Button under bio text */
+.bio-cert-button {
+    display: block;
+    margin: 2rem auto 0 auto; /* centers it */
     padding: 0.75rem 1.5rem;
     background: var(--accent-color);
     color: white;
@@ -260,15 +312,17 @@ header h2.active {
     border-radius: 6px;
     font-weight: 600;
     transition: background 0.2s ease;
+    width: fit-content; /* keeps it from stretching */
 }
 
-.cert-button:hover {
-    background: var(--hover-color);
+
+.bio-cert-button:hover {
+    background: var(--nav-background);
 }
 
-/* Right column: dynamic headshot */
+
+/* Right side photo wrapper */
 .bio-photo-wrapper {
-    width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -277,27 +331,36 @@ header h2.active {
     width: 100%;
     max-width: 350px;
 
-    /* Desktop: force square crop */
-    aspect-ratio: 1 / 1.5;
+
     object-fit: cover;
-    object-position: top; /* top of the image stays visible */
+    object-position: top;
 
     border-radius: 8px;
 }
 
-/* Mobile adjustments */
+/* Mobile layout */
 @media (max-width: 900px) {
-    .bio-split {
+    .bio-container {
         grid-template-columns: 1fr;
         text-align: center;
+        margin: 3rem auto; /* slightly tighter but still roomy */
+    }
+
+    .bio-left {
+        padding: 1.5rem 0; /* extra breathing room on mobile */
+        order: 2;
     }
 
     .bio-photo {
-        aspect-ratio: auto; /* allow natural dimensions */
+        aspect-ratio: auto;
         width: 80%;
         max-width: 350px;
+        margin: 1rem auto 0 auto;
+        order:1;
     }
 }
+
+
 
 
 /* TESTING OUT CARDS */
@@ -391,22 +454,12 @@ header h2.active {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .info-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    justify-content: center;
     gap: 2rem;
     padding: 3rem 1rem;
+    flex-wrap: wrap
 }
 
 .card {
@@ -442,6 +495,7 @@ header h2.active {
 /* Title */
 .card h3 {
     font-size: 1.6rem;
+    text-align: center;
     margin-bottom: 1rem;
     font-family: "Playfair Display", serif;
 }
@@ -473,7 +527,7 @@ header h2.active {
 }
 
 /* Mobile layout */
-@media (max-width: 800px) {
+@media (max-width: 900px) {
     .info-cards {
         grid-template-columns: 1fr;
     }
