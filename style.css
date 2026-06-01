@@ -1,0 +1,490 @@
+/* Poppins + Lora */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;600;700&display=swap');
+
+/* Playfair */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+
+:root{
+    --primary-color: #c6d2cb;
+    --nav-background: #485b51;
+    --nav-text: #fff;
+    --hover-color: #c6d2cb;
+    /* --accent-color: #0071FF;  */
+    --accent-color: #7E998A;
+    --text-color: #485b51
+    ;
+    }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1{
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+}
+
+h2{
+    font-family: "Georgia", serif;
+    font-weight: 100;
+    font-style: italic;
+}
+
+body, p {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+
+main{
+    padding: min(5em, 7%);
+}
+main p{
+    margin-top: .35em;
+}
+nav{
+    background-color: var(--nav-background);
+    border-bottom: 1px solid var(--hover-color);
+}
+nav ul{
+    list-style: none;
+    display: flex; /*removes bullet points from list*/
+}
+nav .home-li{
+    margin-right: auto;
+}
+nav li{
+    display: flex;
+}
+nav a{
+    display: flex;
+    text-decoration: none;
+    color: var(--nav-text);
+    padding: 1em 2em;
+    transition: background-color 150ms ease;
+    position: relative;
+    z-index: 21; /* ensures links stay above overlay */
+}
+nav a:hover{
+    background-color: var(--hover-color);
+}
+nav a.active-link{
+    border-bottom: 2px solid var(--nav-text);
+}
+nav a.accent-link{
+    background-color: var(--accent-color);
+}
+#open-sidebar-button{
+    display: none;
+    background: none;
+    border: none;
+    padding: 1em;
+    margin-left: auto;
+    cursor: pointer;
+}
+#close-sidebar-button{
+    display: none;
+    background: none;
+    border: none;
+    padding: 1em;
+    cursor: pointer;
+}
+#overlay{
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    inset: 0;
+    z-index: 9;
+    display: none;
+}
+@media screen and (max-width: 750px){
+    #open-sidebar-button, #close-sidebar-button{
+        display: block;
+    }
+    nav{
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: min(15em, 100%);
+        z-index: 20;
+        border-left: 1px solid var(--hover-color);
+        transition: right 300ms ease-out;
+        background-color: var(--nav-background);
+    }
+    nav.show{
+        right: 0;
+    }
+    nav.show ~ #overlay{
+        display: block;
+    }
+    nav ul{
+        width: 100%;
+        flex-direction: column;
+    }
+    nav a{
+        width: 100%;
+        padding-left: 2.5em;
+    }
+    nav .home-li{
+        margin-right: unset;
+    }
+ }
+
+
+body{
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-color: var(--primary-color);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    line-height: 1.6;
+    color: #333;
+    scroll-behavior: smooth;
+}
+
+
+
+header {
+    position: relative;
+    padding: 80px 20px;
+    background: url('../images/hiking-hero.jpg') no-repeat center center/cover;
+    /* background: url('../images/test_surf_hero_1.jpg') no-repeat center center/cover; */
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end; /* pushes content to the right */
+    align-items: center;       /* vertically centers the text */
+}
+
+/* Left → Right fade into --nav-background */
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(255,255,255,0) 0%,          /* fully transparent on left */
+        var(--nav-background) 80%        /* solid nav color on right */
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+/* Right-half text container */
+header .text-box {
+    position: relative;
+    width: 50%;
+    text-align: center;
+    z-index: 2;
+}
+
+header h1,
+header h2 {
+    color: var(--primary-color);
+    -webkit-text-stroke: 1px var(--nav-background); /* outline */
+    paint-order: stroke fill; /* ensures outline is visible */
+}
+
+
+/* H1 styling */
+header h1 {
+    font-size: clamp(1.8rem, calc(3vw + 1rem), 5rem);
+    /* background-color: rgba(255, 255, 255, 0.4); */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Rotating H2 lines */
+header h2 {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    transition: opacity 0.8s ease-in-out;
+}
+
+header h2.active {
+    opacity: 1;
+}
+
+.container {
+    padding: min(5em, 8%);
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+/* Full-width text */
+.bio-text-full {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 3rem auto;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+/* Two-column layout */
+.bio-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-top: 2rem;
+}
+
+/* Left column: ABOS logo + button */
+.bio-cert {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.cert-logo {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 1.5rem;
+}
+
+.cert-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.cert-button:hover {
+    background: var(--hover-color);
+}
+
+/* Right column: dynamic headshot */
+.bio-photo-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.bio-photo {
+    width: 100%;
+    max-width: 350px;
+
+    /* Desktop: force square crop */
+    aspect-ratio: 1 / 1.5;
+    object-fit: cover;
+    object-position: top; /* top of the image stays visible */
+
+    border-radius: 8px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 900px) {
+    .bio-split {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .bio-photo {
+        aspect-ratio: auto; /* allow natural dimensions */
+        width: 80%;
+        max-width: 350px;
+    }
+}
+
+
+/* TESTING OUT CARDS */
+/* Card Container */
+.card {
+  width: 350px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  font-family: system-ui, -apple-system, sans-serif;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* Image Wrapper */
+.card-image-container {
+  position: relative;
+  height: 220px;
+  width: 100%;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Text Overlay on Bottom of Photo */
+.card-text-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px 16px 16px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+  color: #ffffff;
+}
+
+.card-title {
+  margin: 0 0 4px 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.card-subtitle {
+  margin: 0;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Bottom Body Content */
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card-description {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #4a5568;
+}
+
+/* Call to Action Button */
+.card-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.card-btn:hover {
+  background-color: #1d4ed8;
+}
+
+
+/* TESTING OUT CARDS */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 3rem 1rem;
+}
+
+.card {
+    position: relative;
+    padding: 2rem;
+    border-radius: 12px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* pushes button to bottom */
+    min-height: 350px;
+
+    background-image: var(--bg);
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+/* Tinted overlay */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45); /* adjust tint strength */
+    z-index: 0;
+}
+
+.card > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Title */
+.card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    font-family: "Playfair Display", serif;
+}
+
+/* Body text */
+.card p {
+    flex-grow: 1; /* ensures equal spacing */
+    margin-bottom: 1.5rem;
+    font-family: 'Lora', serif;
+    text-shadow: var(--nav-background);
+
+}
+
+/* CTA Button */
+.card .cta {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.card .cta:hover {
+    background: var(--nav-background);
+}
+
+/* Mobile layout */
+@media (max-width: 800px) {
+    .info-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--nav-background);
+    color: var(--nav-text);
+    margin-top: 40px;
+}
