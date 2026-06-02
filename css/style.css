@@ -168,6 +168,9 @@ header {
     background: url('../images/hiking-hero.jpg') no-repeat center center/cover;
     overflow: hidden;
 
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
 }
 
 
@@ -186,11 +189,11 @@ header::before {
 }
 
 header .text-box {
-    justify-content: end;
-    position: relative;
+    position:relative;
     z-index: 2;
     width: 100%;
     text-align: center;
+    
 }
 
 @media (max-width: 900px) {
@@ -212,7 +215,7 @@ header .text-box {
 header h1,
 header h2 {
     color: var(--primary-color);
-    -webkit-text-stroke: 1px var(--nav-background); /* outline */
+    -webkit-text-stroke: 1px #000000; /* outline */
     paint-order: stroke fill; /* ensures outline is visible */
 }
 
