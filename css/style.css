@@ -331,7 +331,7 @@ header h2.active {
 
 
 
-/* TESTING OUT CARDS */
+/* AAHKS INFO CARDS */
 /* Card Container */
 .card {
   width: 350px;
@@ -418,9 +418,21 @@ header h2.active {
 }
 
 
-/* TESTING OUT CARDS */
+/* AAHKS CARDS */
 
+.aahks-section {
+  margin-top: 40px;
+  padding: 0 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.aahks-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
 
 .info-cards {
     display: flex;
@@ -466,6 +478,8 @@ header h2.active {
     text-align: center;
     margin-bottom: 1rem;
     font-family: "Playfair Display", serif;
+    -webkit-text-stroke: 1px #000000; /* outline */
+    paint-order: stroke fill; /* ensures outline is visible */
 }
 
 /* Body text */
@@ -497,12 +511,97 @@ header h2.active {
 /* Mobile layout */
 @media (max-width: 900px) {
     .info-cards {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        align-items: center;
     }
+
+    .card {
+        width: 90%;
+        max-width: 400px;
+    }
+}
+
+.education-section {
+  margin-top: 40px;
+  padding: 0 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.education-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
 
 
+.education-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  justify-content: center;                 /* centers both columns */
+  align-items: start;
+  column-gap: 60px;                        /* controls space between columns */
+  row-gap: 30px;                           /* vertical spacing between rows */
+}
+
+.edu-card {
+  width: 100%;
+  max-width: 450px; /* keeps your design look */
+  padding: 15px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.edu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+
+.edu-card img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-right: 15px;
+}
+
+.edu-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.edu-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.edu-subtitle {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+
+@media (min-width: 1200px) {
+  .education-container {
+    justify-content: space-between;
+  }
+}
+
+/* Small screens → 1 column */
+@media (max-width: 600px) {
+  .education-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 footer {
     text-align: center;
     padding: 20px;
