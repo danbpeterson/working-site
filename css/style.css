@@ -539,7 +539,7 @@ header h2.active {
 
 .education-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 450px 450px;
   grid-template-rows: auto auto;
   justify-content: center;                 /* centers both columns */
   align-items: start;
@@ -548,8 +548,7 @@ header h2.active {
 }
 
 .edu-card {
-  width: 100%;
-  max-width: 450px; /* keeps your design look */
+  width: 425px; /* keeps your design look */
   padding: 15px;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.15);
@@ -596,12 +595,98 @@ header h2.active {
 }
 
 /* Small screens → 1 column */
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
   .education-container {
+    display: flex;
     flex-direction: column;
     align-items: center;
   }
 }
+
+
+.association-section {
+  margin-top: 40px;
+  padding: 0 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.association-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.association-container {
+  display: grid;
+  grid-template-columns: 450px 450px;
+  grid-template-rows: auto auto;
+  justify-content: center;                 /* centers both columns */
+  align-items: start;
+  column-gap: 60px;                        /* controls space between columns */
+  row-gap: 30px;                           /* vertical spacing between rows */
+}
+
+.asc-card {
+  width: 425px;
+  padding: 15px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.asc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.asc-card img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-right: 15px;
+  border-radius: 6px; /* optional: looks nice for association badges */
+}
+
+.asc-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.asc-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.asc-subtitle {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+  .association-container {
+    justify-content: space-between;
+  }
+}
+
+/* Small screens → 1 column */
+@media (max-width: 1000px) {
+  .association-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+
+
 footer {
     text-align: center;
     padding: 20px;
