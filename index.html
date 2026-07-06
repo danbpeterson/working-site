@@ -6,20 +6,26 @@
     <title>Dr. Shian L. Peterson, MD</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" href="css/style.css">
-    <script src="script.js"  defer></script>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
 
+    <!-- Mobile Nav Toggle -->
     <button id="open-sidebar-button" onclick="openSidebar()" aria-label="open sidebar" aria-expanded="false" aria-controls="navbar">
-        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="32"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="32">
+            <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+        </svg>
     </button>
 
+    <!-- Navigation -->
     <nav id="navbar">
         <ul>
             <li>
                 <button id="close-sidebar-button" onclick="closeSidebar()" aria-label="close sidebar">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="32"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="32">
+                        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                    </svg>
                 </button>
             </li>
             <li class="home-li"><a class="active-link" aria-current="page" href="index.html">Home</a></li>
@@ -32,23 +38,19 @@
 
     <div id="overlay" onclick="closeSidebar()" aria-hidden="true"></div>
 
+    <!-- Hero -->
+    <header>
+        <div class="text-box">
+            <h1>Shian L. Peterson, MD</h1>
+            <h2>Restoring function</h2>
+            <h2>Promoting healthy aging</h2>
+            <h2>Guiding patients through their joint replacement journey</h2>
+        </div>
+    </header>
 
- <header>
-
-    <div class="text-box">
-        <h1>Shian L. Peterson, MD</h1>
-        <h2>Restoring function</h2>
-        <h2>Promoting healthy aging</h2>
-        <h2>Guiding patients through their joint replacement journey</h2>
-    </div>
-</header>
-
-
-
+    <!-- Bio Section -->
     <div class="bio-container">
-
-        <!-- Left: Bio text -->
-        <div class="bio-text-full bio-left">
+        <div class="bio-left">
             <p></p>
             <p>Dr. Peterson is a board certified, active duty orthopaedic surgeon in the US Navy, who is fellowship-trained in Hip and Knee Replacements.</p>
             <p>She has a passion for restoring function, healthy aging, and longevity, and partners with her patients to decide whether surgery is the best next step for them to take on their joint replacement journey.</p>
@@ -57,31 +59,26 @@
             <a href="https://mycertifiedorthopaedicsurgeon.org/" class="bio-cert-button" target="_blank" rel="noopener noreferrer">
                 Find out more about board certification
             </a>
-
         </div>
 
-        <!-- Right: Dynamic headshot -->
         <div class="bio-photo-wrapper">
             <img src="images/headshot.png" alt="Dr. Peterson" class="bio-photo">
         </div>
-
     </div>
 
-
-
-
-    <section class="aahks-section">
-        <h2 class="aahks-title">AAHKS Resouces</h2>
+    <!-- AAHKS Section -->
+    <section class="section">
+        <h2 class="section-title">AAHKS Resources</h2>
         <p>The American Association of Hip and Knee Surgeons can help you understand more about your upcoming surgery</p>
 
-        <div class="info-cards">
-            <div class="card" style="--bg:url('../images/Copilot_knee.png')">
+        <div class="two-col-grid">
+            <div class="card card-base" style="--bg:url('../images/Copilot_knee.png')">
                 <h3>Knee Surgeries</h3>
                 <p></p>
                 <a href="https://hipkneeinfo.org/knee-care/total-knee-replacement/" class="cta" target="_blank" rel="noopener noreferrer">Learn More</a>
             </div>
 
-            <div class="card" style="--bg:url('../images/Copilot_hip.png')">
+            <div class="card card-base" style="--bg:url('../images/Copilot_hip.png')">
                 <h3>Hip Surgeries</h3>
                 <p></p>
                 <a href="https://hipkneeinfo.org/hip-care/total-hip-replacement/" class="cta" target="_blank" rel="noopener noreferrer">Learn More</a>
@@ -89,50 +86,72 @@
         </div>
     </section>
 
+    <!-- Education Section -->
+    <section class="section">
+        <h2 class="section-title">Education and Training</h2>
 
-    <section class="education-section">
-    <h2 class="education-title">Education and Training</h2>
+        <div class="two-col-grid">
+            <div class="edu-card card-base">
+                <img src="images/logo_usna.png" alt="USNA Logo">
+                <div class="edu-text">
+                    <div class="edu-title">Bachelors of Science</div>
+                    <div class="edu-subtitle">United States Naval Academy</div>
+                </div>
+            </div>
 
-    <div class="education-container">
+            <div class="edu-card card-base">
+                <img src="images/logo_nyu.png" alt="NYU Logo">
+                <div class="edu-text">
+                    <div class="edu-title">Doctor of Medicine (M.D.)</div>
+                    <div class="edu-subtitle">New York University School of Medicine</div>
+                </div>
+            </div>
 
-        <div class="edu-card">
-        <img src="images/logo_usna.png" alt="USNA Logo">
-        <div class="edu-text">
-            <div class="edu-title">United States Naval Academy</div>
-            <div class="edu-subtitle">Bachelors of Science</div>
-        </div>
-        </div>
+            <div class="edu-card card-base">
+                <img src="images/logo_nmcsd.png" alt="NMCSD Logo">
+                <div class="edu-text">
+                    <div class="edu-title">Orthopaedic Surgery Residency</div>
+                    <div class="edu-subtitle">Naval Medical Center San Diego</div>
+                </div>
+            </div>
 
-        <div class="edu-card">
-        <img src="images/logo_nyu.png" alt="NYU Logo">
-        <div class="edu-text">
-            <div class="edu-title">New York University School of Medicine</div>
-            <div class="edu-subtitle">Doctor of Medicine (M.D.)</div>
+            <div class="edu-card card-base">
+                <img src="images/logo_mgh.png" alt="MGH Logo">
+                <div class="edu-text">
+                    <div class="edu-title">Adult Reconstruction Fellowship</div>
+                    <div class="edu-subtitle">Massachusetts General Hospital</div>
+                </div>
+            </div>
         </div>
-        </div>
-
-        <div class="edu-card">
-        <img src="images/logo_nmcsd.png" alt="NMCSD Logo">
-        <div class="edu-text">
-            <div class="edu-title">Naval Medical Center San Diego</div>
-            <div class="edu-subtitle">Orthopaedic Surgery Residency</div>
-        </div>
-        </div>
-
-        <div class="edu-card">
-        <img src="images/logo_mgh.png" alt="MGH Logo">
-        <div class="edu-text">
-            <div class="edu-title">Massachusetts General Hospital</div>
-            <div class="edu-subtitle">Adult Reconstruction Fellowship</div>
-        </div>
-        </div>
-
-    </div>
     </section>
 
+    <!-- Associations Section -->
+    <section class="section">
+        <h2 class="section-title">Professional Associations</h2>
 
+        <div class="two-col-grid">
+            <div class="asc-card card-base">
+                <img src="images/aahks_logo_circle.png" alt="AAHKS">
+                <div class="asc-text">
+                    <div class="asc-title">AAHKS Fellow</div>
+                    <div class="asc-subtitle">American Association of Hip & Knee Surgeons</div>
+                </div>
+            </div>
+
+            <div class="asc-card card-base">
+                <img src="images/aaos_logo_abrev.png" alt="AAOS">
+                <div class="asc-text">
+                    <div class="asc-title">AAOS Fellow</div>
+                    <div class="asc-subtitle">American Academy of Orthopaedic Surgeons</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <p>&copy; 2026 Dr. Shian L. Peterson, MD | All Rights Reserved</p>
     </footer>
+
 </body>
 </html>
