@@ -1,42 +1,58 @@
 const openButton = document.getElementById('open-sidebar-button')
 const navbar = document.getElementById('navbar')
 
-const media = window.matchMedia("(width < 750px)")
+const media = window.matchMedia('(max-width: 900px)')
 
-media.addEventListener('change', (e) => updateNavbar(e))
+media.addEventListener('change', updateNavbar)
 
-function updateNavbar(e){
+function updateNavbar(e) {
     const isMobile = e.matches
-    console.log(isMobile)
-    if(isMobile){
-        navbar.setAttribute('inert', '')
-    }
-    else{
+
+    if (isMobile) {
         navbar.removeAttribute('inert')
+        closeSidebar()
+    } else {
+        navbar.removeAttribute('inert')
+        navbar.classList.remove('show')
+        openButton.setAttribute('aria-expanded', 'false')
     }
 }
 
-function openSidebar(){
+function openSidebar() {
     navbar.classList.add('show')
+    navbar.removeAttribute('inert')
     openButton.setAttribute('aria-expanded', 'true')
 }
 
-function closeSidebar(){
+function closeSidebar() {
     navbar.classList.remove('show')
+    navbar.removeAttribute('inert')
     openButton.setAttribute('aria-expanded', 'false')
 }
+
+Array.from(document.querySelectorAll('nav a')).forEach((link) => {
+    link.addEventListener('click', () => {
+        if (window.innerWidth <= 900) {
+            closeSidebar()
+        }
+    })
+})
+
 updateNavbar(media)
 
-document.addEventListener("DOMContentLoaded", () => {
-    const phrases = document.querySelectorAll("header h2");
-    let index = 0;
+document.addEventListener('DOMContentLoaded', () => {
+    const phrases = document.querySelectorAll('header h2')
 
-    // Set the first one active
-    phrases[index].classList.add("active");
+    if (!phrases.length) {
+        return
+    }
+
+    let index = 0
+    phrases[index].classList.add('active')
 
     setInterval(() => {
-        phrases[index].classList.remove("active");
-        index = (index + 1) % phrases.length;
-        phrases[index].classList.add("active");
-    }, 3000);
-});
+        phrases[index].classList.remove('active')
+        index = (index + 1) % phrases.length
+        phrases[index].classList.add('active')
+    }, 3000)
+})
