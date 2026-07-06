@@ -51,6 +51,7 @@ body {
     display: grid;
     grid-template-rows: auto 1fr auto;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 /* -------------------------------------------------
@@ -211,15 +212,29 @@ header h2.active {
 
 @media (max-width: 900px) {
     header {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        padding-top: 120px;
+        min-height: 100vh;
+        min-height: 100dvh;
+        padding: 120px 20px 60px;
         text-align: center;
     }
 
-    .text-box {
-        order: 1;
+    header .text-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
         margin-bottom: 2rem;
+    }
+
+    header h2 {
+        position: static;
+        display: none;
+        opacity: 0;
+    }
+
+    header h2.active {
+        display: block;
+        opacity: 1;
     }
 }
 
@@ -406,7 +421,7 @@ header h2.active {
 
 .two-col-grid {
     display: grid;
-    grid-template-columns: 450px 450px;
+    grid-template-columns: repeat(2, minmax(280px, 425px));
     justify-content: center;
     align-items: start;
     column-gap: 60px;
@@ -414,7 +429,8 @@ header h2.active {
 }
 
 .card-base {
-    width: 425px;
+    width: 100%;
+    max-width: 425px;
     border-radius: 12px;
 }
 
@@ -422,7 +438,6 @@ header h2.active {
    AAHKS CARDS (FIXED COLOR CASCADE)
 ------------------------------------------------- */
 .card {
-    composes: card-base;
     position: relative;
     padding: 2rem;
     display: flex;
@@ -488,7 +503,6 @@ header h2.active {
    EDUCATION CARDS
 ------------------------------------------------- */
 .edu-card {
-    composes: card-base;
     padding: 15px;
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(6px);
@@ -529,7 +543,6 @@ header h2.active {
    ASSOCIATION CARDS
 ------------------------------------------------- */
 .asc-card {
-    composes: card-base;
     padding: 15px;
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(6px);
@@ -572,13 +585,14 @@ header h2.active {
 ------------------------------------------------- */
 @media (max-width: 1000px) {
     .two-col-grid {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 1.25rem;
     }
 
     .card-base {
-        width: 425px;
+        width: min(100%, 425px);
+        max-width: 425px;
     }
 }
 
