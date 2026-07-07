@@ -224,16 +224,30 @@ header h2.active {
         align-items: center;
         gap: 0.75rem;
         margin-bottom: 2rem;
+        min-height: 13rem;
+        justify-content: center;
+        position: relative;
     }
 
     header h2 {
-        position: static;
-        display: none;
+        position: absolute;
+        top: 72%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block;
+        visibility: hidden;
         opacity: 0;
+        min-height: 3.2rem;
+        line-height: 1.25;
+        max-width: min(100%, 32rem);
+        padding: 0 0.5rem;
+        width: 100%;
+        text-align: center;
+        margin-top: 1rem;
     }
 
     header h2.active {
-        display: block;
+        visibility: visible;
         opacity: 1;
     }
 }
