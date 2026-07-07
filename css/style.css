@@ -375,6 +375,34 @@ header h2.active {
     margin-bottom: 20px;
 }
 
+.section-aahks {
+    text-align: left;
+}
+
+.section-aahks .section-title,
+.section-aahks > p {
+    text-align: left;
+}
+
+.section-aahks .two-col-grid {
+    justify-items: center;
+}
+
+.section-aahks .card {
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .section-aahks {
+        text-align: center;
+    }
+
+    .section-aahks .section-title,
+    .section-aahks > p {
+        text-align: center;
+    }
+}
+
 .preop-page .section {
     background: rgba(255, 255, 255, 0.8);
     border-radius: 16px;
