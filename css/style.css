@@ -104,6 +104,16 @@ nav a.accent-link {
     border: none;
     padding: 1em;
     cursor: pointer;
+    color: var(--primary-color);
+}
+
+#open-sidebar-button svg,
+#close-sidebar-button svg {
+    fill: currentColor;
+}
+
+.mobile-top-bar {
+    display: none;
 }
 
 #overlay {
@@ -116,29 +126,52 @@ nav a.accent-link {
 
 /* Mobile Nav */
 @media screen and (max-width: 900px) {
+    .mobile-top-bar {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3.5rem;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 1rem;
+        background-color: var(--nav-background);
+        /* border-bottom: 1px solid var(--hover-color); */
+        z-index: 19;
+        transition: transform 200ms ease;
+    }
+
+    .mobile-top-bar.is-hidden {
+        transform: translateY(-100%);
+    }
+
     #open-sidebar-button,
     #close-sidebar-button {
         display: block;
     }
 
     #open-sidebar-button {
-        position: fixed;
-        top: 1rem;
-        right: 1rem;
-        padding-right: 0.75rem;
-        z-index: 19;
+        position: static;
+        padding: 0.5rem;
+        z-index: auto;
     }
 
     nav {
         position: fixed;
-        top: 0;
+        top: 3.5rem;
         right: -100%;
-        height: 100vh;
+        height: calc(100vh - 3.5rem);
+        height: calc(100dvh - 3.5rem);
         width: min(15em, 100%);
         z-index: 20;
-        border-left: 1px solid var(--hover-color);
-        transition: right 300ms ease-out;
+        /* border-left: 1px solid var(--hover-color); */
+        transition: right 300ms ease-out, top 200ms ease;
         background-color: var(--nav-background);
+    }
+
+    nav.is-top-offset {
+        top: 0;
     }
 
     nav.show {
@@ -189,7 +222,7 @@ header .text-box {
 header h1,
 header h2 {
     color: var(--nav-text);
-    -webkit-text-stroke: 1px #000000;
+    -webkit-text-stroke: 1px var(--nav-background);
     paint-order: stroke fill;
 }
 
