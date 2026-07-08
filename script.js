@@ -98,4 +98,5 @@ document.addEventListener('DOMContentLoaded', () => {
         index = (index + 1) % phrases.length
         phrases[index].classList.add('active')
     }, 3000)
+
 })
