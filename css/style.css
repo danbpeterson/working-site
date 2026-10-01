@@ -432,14 +432,6 @@ header h2.active {
     text-align: center;
 }
 
-.preop-page .section > p:first-of-type {
-    background: rgba(198, 210, 203, 0.35);
-    border-left: 4px solid var(--accent-color);
-    border-radius: 0 8px 8px 0;
-    padding: 1rem 1.25rem;
-    margin-bottom: 1.5rem;
-}
-
 .preop-page .section h3 {
     color: var(--nav-background);
     margin-top: 2rem;
