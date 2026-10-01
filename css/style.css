@@ -392,6 +392,19 @@ header h2.active {
     text-align: center;
 }
 
+.home-standard-section {
+    width: 100%;
+}
+
+.home-standard-section .two-col-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-items: stretch;
+}
+
+.home-standard-section .card-base {
+    max-width: none;
+}
+
 @media (max-width: 900px) {
     .section-aahks {
         text-align: center;
@@ -747,9 +760,19 @@ header h2.active {
         gap: 1.25rem;
     }
 
+    .home-standard-section .two-col-grid {
+        grid-template-columns: 1fr;
+        justify-items: stretch;
+    }
+
     .card-base {
         width: min(100%, 425px);
         max-width: 425px;
+    }
+
+    .home-standard-section .card-base {
+        width: 100%;
+        max-width: none;
     }
 }
 
