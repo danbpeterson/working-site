@@ -783,3 +783,11 @@ footer p,
 footer a {
     color: var(--nav-text);
 }
+
+footer p {
+    margin-bottom: 0.25rem;
+}
+
+footer .footer-disclaimer {
+    display: inline-block;
+}

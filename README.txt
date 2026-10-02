@@ -13,6 +13,7 @@ Pages
 - publications.html: Featured research and publication links.
 - resources.html: Additional patient education and support information. This
     page is not currently linked from the main navigation.
+- disclaimer.html: Healthcare disclaimer and guidance about using site content.
 
 Run Locally
 -----------
